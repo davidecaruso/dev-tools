@@ -1,0 +1,21 @@
+{
+  "name": "davidecaruso/dev-tools",
+  "type": "library",
+  "homepage": "https://github.com/davidecaruso/dev-tools",
+  "description": "Collection of helpful static methods for development",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Davide Caruso",
+      "email": "davide.caruso93@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  }
+}

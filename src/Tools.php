@@ -5,6 +5,8 @@
  */
 class Dev_Tools {
 
+
+
     /**
      * Prints an array structurally.
      * @param array $array <p>
@@ -42,6 +44,7 @@ class Dev_Tools {
         if( $exit ) exit();
 
     }
+
 
 
     /**
@@ -120,13 +123,27 @@ RDR;
     /**
      * Remove backslashes recursively
      * @param array $array <p>
-     * The array which contain the string to strip
+     * The array which contains the string to be stripped
      * </p>
      * @return array|string Backslashes stripped
      * @author Davide Caruso
      */
-    public static function stripslashes_array( $array ){
+    public static function stripslashes_array( $array ) {
         return is_array( $array ) ? array_map( 'stripslashes_array', $array ) : stripslashes( $array );
+    }
+
+
+
+    /**
+     * Quote recursively array's strings with slashes
+     * @param array $array <p>
+     * The array which contain the strings to be escaped.
+     * </p>
+     * @return array|string The escaped array
+     * @author Davide Caruso
+     */
+    public static function addslashes_array( $data ) {
+        return is_array( $data ) ? array_map( 'addslashes', $data ) : addslashes( $data );
     }
 
 
@@ -203,6 +220,23 @@ RDR;
     }
 
 
+
+    /**
+     * Converts a seconds interval to days, hours, minutes and seconds
+     * @param int|string $seconds <p>
+     * The seconds
+     * </p>
+     * @return string
+     * @author Davide Caruso
+     */
+    public static function seconds_to_time ( $seconds ) {
+        $dtF = new DateTime( "@0" );
+        $dtT = new DateTime( "@$seconds" );
+        return $dtF->diff( $dtT )->format( '%a days, %h hours, %i minutes and %s seconds' );
+    }
+
+
+
     /**
      * Un-escape a string
      * @param string $string <p>
@@ -231,6 +265,7 @@ RDR;
         return $unescaped_string;
 
     }
+
 
 
     /**
@@ -267,6 +302,7 @@ RDR;
     }
 
 
+
     /**
      * Returns a list of days during a time interval
      * @param $start_date <p>
@@ -297,4 +333,7 @@ RDR;
 
         return $data_range;
     }
+
+
+
 }
